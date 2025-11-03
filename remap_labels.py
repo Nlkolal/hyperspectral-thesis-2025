@@ -1,0 +1,15 @@
+from pathlib import Path
+import numpy as np
+
+base = Path("dataset/h2_normal_norm")  # or whatever set you’re training on
+ids = [0,1,2,3,4,5,6,7,8]
+
+for i in ids:
+    y = np.load(base / f"label_{i}.npy")
+    y2 = y.copy()
+    y2[y==1] = 0
+    y2[y==2] = 1
+    y2[y==3] = 2
+    np.save(base / f"label_{i}.npy", y2)
+
+print("remapped labels to {0,1,2}")
