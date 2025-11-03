@@ -5,19 +5,19 @@ import sys
 
 dir_base = Path('data') / 'PhilipBerg' / 'SeaLandCloudH2'
 
-dir_target = Path('dataset') / 'h2_normal'
+dir_target = Path('dataset') / 'h2_bin_overlap_triangular_3_3'
 
 if dir_target.is_dir():
     sys.exit("the target folder for this dataset is allredy created, write a new")
 else:
-    dir_target.mkdir()  
+    dir_target.mkdir()
 
 
 def load_hyperspectral_data(Load_NC_Path: Path):
     satobj_h2 = Hypso2(path=Load_NC_Path, verbose=True)
     satobj_h2.generate_l1b_cube()
     data_cube = satobj_h2.l1b_cube.to_numpy()
-    data_cube = processing_drop_bands(data_cube)
+    data_cube = processing_bin_overlap_triangular(data_cube, 3, 3)
     return data_cube.astype(np.float32, copy=False)
 
 def processing_drop_bands(data_cube):

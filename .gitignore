@@ -18,3 +18,5 @@ Thumbs.db
 # Data
 data/
 dataset/
+tiny-imagenet-200/
+tiny-imagenet-20/

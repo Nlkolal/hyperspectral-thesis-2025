@@ -2,7 +2,7 @@ from pathlib import Path
 import numpy as np
 import matplotlib.pyplot as plt
 
-base = Path("dataset") / 'h2_normal_norm'
+base = Path("dataset") / 'h2_normal'
 
 # guess RGB band indices (tweak later)
 iR, iG, iB = 65, 45, 25
